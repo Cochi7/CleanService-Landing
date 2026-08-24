@@ -163,7 +163,7 @@
   .wipe-divider svg{width:100%; height:100%; display:block;}
 
   /* ---------- SECTION BASE ---------- */
-  section{padding:88px 0; scroll-margin-top:84px;}
+  section{padding:88px 0;}
   .section-head{max-width:640px; margin-bottom:44px;}
   .section-head h2{font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:700; margin-top:10px;}
   .section-head p{color:var(--ink-soft); margin-top:14px; font-size:1.02rem;}
@@ -263,6 +263,14 @@
   }
   .contact-row{display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid #eef1f0;}
   .contact-row:last-child{border-bottom:none;}
+  .contact-row-text{flex:1; min-width:0;}
+  .btn-small{
+    display:inline-flex; align-items:center; gap:6px; flex-shrink:0;
+    font-family:var(--font-display); font-weight:600; font-size:.82rem;
+    padding:8px 16px; border-radius:999px; border:1.5px solid var(--teal); color:var(--teal);
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn-small:hover{background:var(--teal); color:#fff;}
   .contact-row .icon{
     width:40px; height:40px; border-radius:10px; background:var(--sand);
     display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem;
@@ -311,7 +319,7 @@
       <a href="#quienes-somos">Quiénes somos</a>
       <a href="#servicios">Servicios</a>
       <a href="#por-que">Por qué elegirnos</a>
-      <a href="#contacto" class="btn btn-primary">Escribinos por WhatsApp</a>
+      <a href="#contacto" class="btn btn-primary">Nuestros contactos</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
   </div>
@@ -448,10 +456,10 @@
       <p class="lead">Escribinos por WhatsApp con la cantidad de unidades, espacios comunes y la frecuencia que necesitás. Te respondemos con un presupuesto a medida.</p>
     </div>
     <div class="contact-card reveal">
-      <div class="contact-row"><div class="icon">💬</div><div><b>WhatsApp</b><span>3541 770044</span></div></div>
-      <div class="contact-row"><div class="icon">✉️</div><div><b>Email</b><span>cleanservice.vcp@gmail.com</span></div></div>
-      <div class="contact-row"><div class="icon">📷</div><div><b>Instagram</b><span><a href="https://instagram.com/cleanservice.vcp" target="_blank" rel="noopener">@cleanservice.vcp</a></span></div></div>
-      <div class="contact-row"><div class="icon">📍</div><div><b>Zona de cobertura</b><span>Villa Carlos Paz y alrededores</span></div></div>
+      <div class="contact-row"><div class="icon">💬</div><div class="contact-row-text"><b>WhatsApp</b><span>3541 770044</span></div></div>
+      <div class="contact-row"><div class="icon">✉️</div><div class="contact-row-text"><b>Email</b><span>cleanservice.vcp@gmail.com</span></div></div>
+      <div class="contact-row"><div class="icon">📷</div><div class="contact-row-text"><b>Instagram</b><span>@cleanservice.vcp</span></div><a class="btn-small" href="https://instagram.com/cleanservice.vcp" target="_blank" rel="noopener">Ver perfil</a></div>
+      <div class="contact-row"><div class="icon">📍</div><div class="contact-row-text"><b>Zona de cobertura</b><span>Villa Carlos Paz y alrededores</span></div></div>
       <a class="btn btn-primary" href="https://wa.me/5493541770044?text=Hola%20Clean%20Service%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener">Escribinos ahora</a>
     </div>
   </div>
@@ -465,6 +473,38 @@
 </footer>
 
 <script>
+  // Scroll preciso a cada sección, calculado en el momento del clic
+  // (evita que se vea un pedazo de la sección anterior o siguiente)
+  function scrollToId(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    const header = document.querySelector('header');
+    const headerH = header.offsetHeight;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - headerH;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    if(!id) return;
+    a.addEventListener('click', (e) => {
+      const el = document.getElementById(id);
+      if(el){
+        e.preventDefault();
+        scrollToId(id);
+        history.pushState(null, '', '#' + id);
+      }
+    });
+  });
+
+  // Si se entra directo con un #ancla en la URL, corrige la posición inicial
+  window.addEventListener('load', () => {
+    if (location.hash){
+      const id = location.hash.slice(1);
+      setTimeout(() => scrollToId(id), 50);
+    }
+  });
+
   // Menú móvil
   const toggle = document.getElementById('menuToggle');
   const links = document.getElementById('navLinks');
