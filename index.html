@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clean Service | Limpieza profesional para consorcios y edificios</title>
+<link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
+<link rel="apple-touch-icon" href="assets/logo.jpeg">
 <meta name="google-site-verification" content="JFoE1O11D_4KRvytlxhnqp5FWtKm5LsqzIGH7CyiFGI" />
 <meta name="description" content="Limpieza de consorcios, edificios, casas, departamentos, alquileres temporarios y finales de obra en Villa Carlos Paz. Más de 5 años de experiencia. Pedí tu presupuesto por WhatsApp.">
 <meta name="keywords" content="limpieza Villa Carlos Paz, limpieza consorcios, limpieza edificios, finales de obra, limpieza casas, limpieza alquileres temporarios, empresa de limpieza">
@@ -12,6 +14,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Clean Service Villa Carlos Paz">
 <meta property="og:title" content="Clean Service | Limpieza profesional para consorcios y edificios">
 <meta property="og:description" content="Más de 5 años cuidando consorcios y edificios. Personal capacitado, supervisión constante y atención personalizada.">
 <meta property="og:locale" content="es_AR">
@@ -233,15 +236,16 @@
   .why-list h3{font-size:1rem; margin-bottom:4px;}
   .why-list p{color:var(--ink-soft); font-size:.92rem;}
 
+  .quotes-stack{display:flex; flex-direction:column; gap:20px;}
   .quote-card{
-    background:#fff; border-radius:var(--radius); padding:34px;
+    background:#fff; border-radius:var(--radius); padding:28px;
     box-shadow:0 10px 30px rgba(14,42,64,.08); position:relative;
   }
   .quote-card::before{
-    content:"“"; font-family:var(--font-display); font-size:4rem; color:var(--green);
-    position:absolute; top:6px; left:24px; line-height:1;
+    content:"“"; font-family:var(--font-display); font-size:3.2rem; color:var(--green);
+    position:absolute; top:4px; left:20px; line-height:1;
   }
-  .quote-card p{color:var(--navy-deep); font-size:1.08rem; font-style:italic; margin:26px 0 20px; position:relative; z-index:1;}
+  .quote-card p{color:var(--navy-deep); font-size:1rem; font-style:italic; margin:22px 0 18px; position:relative; z-index:1;}
   .quote-sign{display:flex; align-items:center; gap:12px;}
   .quote-sign .avatar{
     width:46px; height:46px; border-radius:50%; background:var(--teal);
@@ -439,11 +443,20 @@
         <li><span class="num">05</span><div><h3>Flexibilidad</h3><p>Nos adaptamos a cada consorcio, sus horarios y sus prioridades.</p></div></li>
       </ul>
     </div>
-    <div class="quote-card reveal">
-      <p>Nuestro objetivo es que cada administrador y cada vecino sienta que el edificio está en buenas manos. Por eso supervisamos personalmente cada servicio.</p>
-      <div class="quote-sign">
-        <div class="avatar">AM</div>
-        <div><b>Agustina Martínez</b><span>Titular, Clean Service</span></div>
+    <div class="quotes-stack">
+      <div class="quote-card reveal">
+        <p>Nuestro objetivo es que cada administrador y cada vecino sienta que el edificio está en buenas manos. Por eso supervisamos personalmente cada servicio.</p>
+        <div class="quote-sign">
+          <div class="avatar">AM</div>
+          <div><b>Agustina Martínez</b><span>Socia | Clean Service</span></div>
+        </div>
+      </div>
+      <div class="quote-card reveal">
+        <p>Profesionalizar un servicio también significa cuidar quién lo realiza, cómo se organiza y cómo se responde ante el cliente. Desde el Derecho y los Recursos Humanos, mi trabajo es aportar esa mirada a Clean Service.</p>
+        <div class="quote-sign">
+          <div class="avatar">CA</div>
+          <div><b>Candela Acosta</b><span>Socia | Abogada y Lic. en Gestión de RRHH</span></div>
+        </div>
       </div>
     </div>
   </div>
