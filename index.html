@@ -129,11 +129,10 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative; overflow:hidden;
-    background:linear-gradient(180deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+    background:
+      linear-gradient(180deg, rgba(14,42,64,.88) 0%, rgba(14,42,64,.94) 60%, var(--navy-mid) 100%),
+      url('assets/equipo-trabajando.jpg') center 30%/cover no-repeat;
     padding:76px 0 120px;
-  }
-  .hero .skyline{
-    position:absolute; right:0; bottom:0; left:0; opacity:.5; pointer-events:none;
   }
   .hero-grid{
     position:relative; z-index:2;
@@ -199,6 +198,24 @@
   .client-pill::before{content:"●"; color:var(--green); font-size:.6rem;}
 
   /* ---------- SERVICIOS ---------- */
+  /* ---------- GALERÍA ---------- */
+  .gallery{background:#fff;}
+  .gallery-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
+  .gallery-item{
+    border-radius:var(--radius); overflow:hidden; position:relative;
+    box-shadow:0 8px 24px rgba(14,42,64,.1); aspect-ratio:3/4;
+  }
+  .gallery-item img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .4s ease;
+  }
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-item .caption{
+    position:absolute; left:0; right:0; bottom:0;
+    background:linear-gradient(0deg, rgba(14,42,64,.85), transparent);
+    color:#fff; font-size:.85rem; font-weight:500; padding:28px 16px 14px;
+  }
+
   .services{background:var(--navy-deep); color:#fff; position:relative;}
   .services .section-head h2{color:#fff;}
   .services .section-head p{color:#b9cbd6;}
@@ -297,6 +314,7 @@
   @media (max-width: 880px){
     .hero-grid, .about-grid, .why-grid, .contact-grid{grid-template-columns:1fr;}
     .service-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
     .stat-row{grid-template-columns:1fr;}
     .nav-links{
       position:fixed; top:81px; left:0; right:0; background:var(--navy-deep);
@@ -308,6 +326,7 @@
   }
   @media (max-width: 560px){
     .service-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr;}
     .hero{padding:52px 0 96px;}
   }
 </style>
@@ -322,6 +341,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="#inicio">Inicio</a>
       <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#galeria">Así trabajamos</a>
       <a href="#servicios">Servicios</a>
       <a href="#por-que">Por qué elegirnos</a>
       <a href="#contacto" class="btn btn-primary">Nuestros contactos</a>
@@ -350,19 +370,6 @@
       <div class="stat"><b>24-48h</b><span>respuesta a tu consulta por WhatsApp</span></div>
     </div>
   </div>
-
-  <svg class="skyline" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
-    <g fill="none" stroke="#2c5b78" stroke-width="1.4">
-      <rect x="40" y="70" width="90" height="150"/>
-      <rect x="150" y="30" width="70" height="190"/>
-      <rect x="240" y="100" width="60" height="120"/>
-      <rect x="880" y="50" width="80" height="170"/>
-      <rect x="980" y="90" width="65" height="130"/>
-      <rect x="1070" y="20" width="90" height="200"/>
-      <line x1="60" y1="90" x2="60" y2="210"/>
-      <line x1="900" y1="70" x2="900" y2="210"/>
-    </g>
-  </svg>
 </section>
 
 <div class="wipe-divider" aria-hidden="true">
@@ -390,6 +397,30 @@
       <div class="client-pill">Edificios Miralejos</div>
       <div class="client-pill">Edificio Francis</div>
       <div class="client-pill">Y otros consorcios de la zona</div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Así trabajamos</span>
+      <h2>Nuestro equipo en acción</h2>
+      <p>Fotos reales de nuestros trabajos: así dejamos cada espacio, del piso a los vidrios.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="assets/vidrios-altura.jpg" alt="Limpieza de vidrios en altura en un edificio de Villa Carlos Paz" loading="lazy">
+        <span class="caption">Limpieza de vidrios en altura</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="assets/piso-reflejo.jpg" alt="Limpieza de pisos en un departamento con vista a las sierras" loading="lazy">
+        <span class="caption">Limpieza integral de pisos</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="assets/insumos.jpg" alt="Insumos y elementos de limpieza profesional listos para trabajar" loading="lazy">
+        <span class="caption">Insumos profesionales</span>
+      </div>
     </div>
   </div>
 </section>
@@ -466,8 +497,8 @@
   <div class="wrap contact-grid">
     <div class="reveal">
       <span class="eyebrow">Contacto</span>
-      <h2>Contanos sobre tu edificio y armamos una propuesta</h2>
-      <p class="lead">Escribinos por WhatsApp con la cantidad de unidades, espacios comunes y la frecuencia que necesitás. Te respondemos con un presupuesto a medida.</p>
+      <h2>Contanos sobre tu espacio y armamos una propuesta</h2>
+      <p class="lead">Escribinos por WhatsApp contándonos qué tipo de inmueble necesitás atender, sus dimensiones, espacios y frecuencia del servicio. Te respondemos con una propuesta a medida.</p>
     </div>
     <div class="contact-card reveal">
       <div class="contact-row"><div class="icon">💬</div><div class="contact-row-text"><b>WhatsApp</b><span>3541 770044</span></div></div>
